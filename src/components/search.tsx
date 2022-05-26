@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { searchApi } from '../api/api-service'
 import { Tvshow } from '../api/api-type-definitions'
 import { broadcast } from '@foundit/broadcasterjs'
+import Magnifyer from '../icons/magnifyer.svg'
 
 type Props = {
   updateResults: (result: Tvshow[]) => void
@@ -31,7 +32,9 @@ export default function Search({ updateResults }: Props) {
   return (
     <>
       <div className='search'>
-        <label htmlFor='search-input'>Search</label>
+        <label htmlFor='search-input'>
+          <img src={Magnifyer} alt='Search' />
+        </label>
         <input
           type='search'
           ref={input}

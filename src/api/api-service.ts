@@ -1,27 +1,32 @@
-import { Tvshow } from './api-type-definitions'
+import { SpecificShow, Tvshow } from './api-type-definitions'
 
 const baseurl = 'https://api.tvmaze.com'
 
 export const searchApi = async (search: string): Promise<Tvshow[]> => {
   const url = `${baseurl}/search/shows?q=${search}`
-  return await doFetch(url)
+  const options = { mode: 'cors' }
+  return await doFetch(url, options)
 }
 
-export const detailsApi = async (id: number) => {
-  const url = `${baseurl}/search/shows/${id}`
-  return await doFetch(url)
+export const detailsApi = async (id: number): Promise<SpecificShow> => {
+  const url = `${baseurl}/shows/${id}`
+  const options = { mode: 'cors' }
+  return await doFetch(url, options)
 }
 
-const doFetch = (url: string) => {
-  return fetch(url)
+const doFetch = (url: string, options: any) => {
+  return fetch(url, options)
     .then((res) => {
-      if (!res.ok) throw Error(res.statusText)
+      if (!res.ok) {
+        console.log('Error occured', res)
+        throw new Error(res.statusText)
+      }
       return res.json()
     })
     .then((data) => {
       return data
     })
     .catch((err) => {
-      throw Error('Network error')
+      throw new Error('Network error')
     })
 }

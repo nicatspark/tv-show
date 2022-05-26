@@ -1,3 +1,5 @@
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Tvshow } from '../api/api-type-definitions'
 import { useIsLoadingSearchResult } from '../helpers/useIsLoadingSearchResult'
 import { EmptyList, SearchLoader, SearchResultEl } from './SearchResult.styles'
@@ -5,12 +7,17 @@ import { EmptyList, SearchLoader, SearchResultEl } from './SearchResult.styles'
 type Props = { apiResult: Tvshow[] }
 
 export const SearchResult = ({ apiResult }: Props) => {
+  const navigate = useNavigate()
   const missingImage =
     'https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'
 
   const showDetails = (id: number) => {
-    console.log('id', id)
+    navigate(`/show/${id}`)
   }
+
+  useEffect(() => {
+    console.log('apiResult!!:', apiResult)
+  }, [apiResult])
 
   const showSearchLoader = useIsLoadingSearchResult()
 
