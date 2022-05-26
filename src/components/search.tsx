@@ -22,6 +22,7 @@ export default function Search({ updateResults }: Props) {
       input.current && input.current.focus()
     }
     if (searchString.length >= 2) callAsync()
+    else updateResults([])
   }, [searchString])
 
   return (
