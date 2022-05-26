@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { searchApi } from '../api/api-service'
 import { Tvshow } from '../api/api-type-definitions'
+import { broadcast } from '@foundit/broadcasterjs'
 
 type Props = {
   updateResults: (result: Tvshow[]) => void
 }
 
 export default function Search({ updateResults }: Props) {
-  const [searchString, setSearchString] = useState('')
+  const [searchString, setSearchString] = useState<string>('')
   const input = useRef<HTMLInputElement | null>(null)
 
   useEffect(() => {
@@ -15,11 +16,13 @@ export default function Search({ updateResults }: Props) {
   })
 
   useEffect(() => {
+    broadcast.emit('PENDING-SEARCH', true)
     const callAsync = async () => {
       const result = await searchApi(searchString)
       console.log('result', result)
       updateResults(result)
       input.current && input.current.focus()
+      broadcast.emit('PENDING-SEARCH', false)
     }
     if (searchString.length >= 2) callAsync()
     else updateResults([])
