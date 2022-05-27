@@ -45,12 +45,15 @@ export const EmptyList = styled.div`
   height: 100%;
   .hint {
     display: flex;
-    img {
+    svg {
       transform: scaleX(-1) rotate(-30deg);
+      color: fuchsia;
     }
     h5 {
-      color: #000;
-      transform: rotate(-10deg) translate(-1rem, -1.3rem);
+      font-family: 'Caveat', cursive;
+      font-size: 1.5rem;
+      color: fuchsia;
+      transform: rotate(-10deg) translate(0.8rem, -2.6rem);
     }
   }
 `

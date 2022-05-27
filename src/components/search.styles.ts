@@ -5,6 +5,7 @@ export const Container = styled.main`
   background-color: #eeeeee;
   height: 100%;
   margin: auto;
+  isolation: isolate;
   header {
     height: 130px;
     width: 100%;
@@ -22,6 +23,10 @@ export const Container = styled.main`
     }
   }
   .search {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #eeeeee;
     display: grid;
     place-items: center;
     grid-template-columns: min-content 1fr;

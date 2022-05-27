@@ -47,10 +47,10 @@ export const ShowPage = ({}: Props) => {
   return (
     <>
       <Breadcrumb>
-        &laquo; <Link to='/'>Search tv-show</Link>
+        &laquo; <Link to='/'>search more</Link>
         <span className='hide-sm'>
           {' '}
-          / show details - <strong>{showData.name}</strong>
+          {parse('&#10033;')} show details - <strong>{showData.name}</strong>
         </span>
       </Breadcrumb>
       <Container>
@@ -62,9 +62,19 @@ export const ShowPage = ({}: Props) => {
         />
         <div>
           <h2>{showData.name}</h2>
+          <h6>
+            {showData.genres.join(', ')} {parse('&#10033;')}{' '}
+            {year(showData.premiered)}
+            {showData.ended && ' - '} {year(showData.ended)}
+          </h6>
           <Fragment>{parse(showData.summary)}</Fragment>
         </div>
       </Container>
     </>
   )
+}
+
+function year(s: string) {
+  if (typeof s !== 'string') return s
+  return s.split('-')[0]
 }

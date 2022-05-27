@@ -26,8 +26,13 @@ export const Container = styled.div`
     border: 1px solid #333333;
     max-width: 400px;
   }
+  h2,
+  h6 {
+    margin: 0;
+    padding: 0;
+  }
   h2 {
-    margin-top: 0;
+    font-size: 2em;
   }
   & > div > p {
     line-height: 1.5em;
@@ -43,5 +48,6 @@ export const Breadcrumb = styled.div`
   a {
     text-decoration: underline;
     color: #335577;
+    font-weight: bold;
   }
 `
