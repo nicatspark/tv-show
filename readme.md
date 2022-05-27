@@ -25,6 +25,10 @@ Would probably have used React-Query to wrap the api calls in if it were for rea
 
 Used Emotion, not sure if it passes as a framework or library since it basically is plain css or more simlar to SASS with its nested css. Someone might have wanted to see if I would have written css in BEM format with regular css. My opinion is that the purpose is to write maintainable CSS and the best way to do this is to have component scoped css and use nesting. But I guess there are different opinions.
 
+### Time constraints
+
+As usual 80% went really fast and then most time was spent on the last 20%. Did not do it in one go so can't say exactly where the 5 hours stop was.
+
 ### Further improvments
 
 A debouncer or throttle on the keyboard input in the search.
