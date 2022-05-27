@@ -16,6 +16,10 @@ export const SearchResultEl = styled.article`
     background-color: #ffffff;
     border-radius: 0.3rem;
     overflow: hidden;
+    cursor: pointer;
+    &:hover {
+      outline: 3px solid var(--primary);
+    }
     & > div {
       aspect-ratio: 4/3;
       img {
@@ -43,4 +47,9 @@ export const SearchLoader = styled.div`
   background-color: rgba(255, 255, 255, 0.8);
   inset: 0;
   position: absolute;
+  display: grid;
+  place-items: center;
+  img {
+    transform: scale(2);
+  }
 `

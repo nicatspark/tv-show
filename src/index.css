@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --primary: #ee4e34;
+}
+
 body {
   padding: 0;
   margin: 0;

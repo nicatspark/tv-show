@@ -1,3 +1,4 @@
+import { cachefn } from '../helpers/cache'
 import { SpecificShow, Tvshow } from './api-type-definitions'
 
 const baseurl = 'https://api.tvmaze.com'
@@ -15,6 +16,8 @@ export const detailsApi = async (id: number): Promise<SpecificShow> => {
 }
 
 const doFetch = (url: string, options: any) => {
+  const cachedResult = cachefn().getCache({ url })
+  if (cachedResult) return cachedResult
   return fetch(url, options)
     .then((res) => {
       if (!res.ok) {
@@ -24,6 +27,7 @@ const doFetch = (url: string, options: any) => {
       return res.json()
     })
     .then((data) => {
+      cachefn().storeCache({ url, data })
       return data
     })
     .catch((err) => {

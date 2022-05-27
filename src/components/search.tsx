@@ -17,16 +17,16 @@ export default function Search({ updateResults }: Props) {
   })
 
   useEffect(() => {
-    broadcast.emit('PENDING-SEARCH', true)
     const callAsync = async () => {
       const result = await searchApi(searchString)
-      console.log('result', result)
       updateResults(result)
       input.current && input.current.focus()
       broadcast.emit('PENDING-SEARCH', false)
     }
-    if (searchString.length >= 2) callAsync()
-    else updateResults([])
+    if (searchString.length >= 2) {
+      broadcast.emit('PENDING-SEARCH', true)
+      callAsync()
+    } else updateResults([])
   }, [searchString])
 
   return (

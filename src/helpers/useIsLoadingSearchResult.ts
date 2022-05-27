@@ -6,7 +6,6 @@ export const useIsLoadingSearchResult = (): boolean => {
 
   useEffect(() => {
     const callback = ({ detail: pendingSearch }: { detail: boolean }) => {
-      console.log('pendingSearch:', pendingSearch)
       setShowSearchLoader(pendingSearch)
     }
     broadcast.on(['PENDING-SEARCH', callback])

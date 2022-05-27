@@ -4,20 +4,40 @@ import { useParams } from 'react-router-dom'
 import { detailsApi } from '../api/api-service'
 import { SpecificShow } from '../api/api-type-definitions'
 import { extractError } from '../helpers/extractError'
+import parse from 'html-react-parser'
+import loader from '../icons/loader.svg'
 
 const Container = styled.div`
-  padding: 1rem;
+  padding: 2rem 1rem;
   display: flex;
   gap: 1rem;
   align-items: center;
   flex-flow: column nowrap;
+  min-height: 400px;
+  position: relative;
   @media only screen and (min-width: 756px) {
     flex-flow: row nowrap;
     align-items: flex-start;
   }
+  div.loader {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    & > img {
+      border: none;
+      transform: scale(2);
+    }
+  }
   img {
     border: 1px solid #333333;
     max-width: 400px;
+  }
+  h2 {
+    margin-top: 0;
+  }
+  & > div > p {
+    line-height: 1.5em;
   }
 `
 
@@ -32,7 +52,6 @@ export const ShowPage = ({}: Props) => {
     const doAsync = async (id: number) => {
       try {
         const data = await detailsApi(id)
-        console.log(data)
         setError('')
         setShowData(data)
       } catch (err) {
@@ -41,8 +60,6 @@ export const ShowPage = ({}: Props) => {
     }
     if (id && !isNaN(+id)) doAsync(+id)
   }, [id])
-
-  console.log('error', error)
 
   if (!!error)
     return (
@@ -55,7 +72,9 @@ export const ShowPage = ({}: Props) => {
   if (!showData)
     return (
       <Container>
-        <h2>Loading...</h2>
+        <div className='loader'>
+          <img src={loader} alt='Loading...' />
+        </div>
       </Container>
     )
 
@@ -64,7 +83,7 @@ export const ShowPage = ({}: Props) => {
       <img src={showData.image.medium} alt={showData.name} />
       <div>
         <h2>{showData.name}</h2>
-        <Fragment>{showData.summary}</Fragment>
+        <Fragment>{parse(showData.summary)}</Fragment>
       </div>
     </Container>
   )

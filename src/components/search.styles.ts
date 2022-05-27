@@ -12,9 +12,14 @@ export const Container = styled.main`
     color: #272222;
     display: flex;
     flex-flow: row nowrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-    padding-inline: 1rem;
+    padding: 0 1rem;
+    img {
+      height: 2.4rem;
+      position: relative;
+      top: -0.2rem;
+    }
   }
   .search {
     display: grid;
