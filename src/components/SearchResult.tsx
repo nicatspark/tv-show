@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Tvshow } from '../api/api-type-definitions'
 import { useIsLoadingSearchResult } from '../helpers/useIsLoadingSearchResult'
 import { EmptyList, SearchLoader, SearchResultEl } from './SearchResult.styles'
 import loader from '../icons/loader.svg'
+import handrawnarrow from '../icons/handDrawnArrow.svg'
 
 type Props = { apiResult: Tvshow[] }
 
@@ -39,7 +39,10 @@ export const SearchResult = ({ apiResult }: Props) => {
         ))
       ) : (
         <EmptyList>
-          <h5>No films to list.</h5>
+          <div className='hint'>
+            <img src={handrawnarrow} alt='arrow' />
+            <h5>Try write something.</h5>
+          </div>
         </EmptyList>
       )}
       {showSearchLoader && (

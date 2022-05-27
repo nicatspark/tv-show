@@ -43,8 +43,15 @@ export const EmptyList = styled.div`
   place-items: center;
   width: 100%;
   height: 100%;
-  h5 {
-    color: #cccccc;
+  .hint {
+    display: flex;
+    img {
+      transform: scaleX(-1) rotate(-30deg);
+    }
+    h5 {
+      color: #000;
+      transform: rotate(-10deg) translate(-1rem, -1.3rem);
+    }
   }
 `
 
