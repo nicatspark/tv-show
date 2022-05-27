@@ -45,6 +45,9 @@ export const Breadcrumb = styled.div`
   text-transform: uppercase;
   letter-spacing: 0.1em;
   background-color: #ccc;
+  position: sticky;
+  top: 0;
+  z-index: 1;
   a {
     text-decoration: underline;
     color: #335577;

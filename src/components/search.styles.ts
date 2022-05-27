@@ -6,6 +6,7 @@ export const Container = styled.main`
   height: 100%;
   margin: auto;
   isolation: isolate;
+  box-shadow: 0 0 20px 10px rgb(0 0 0 / 50%);
   header {
     height: 130px;
     width: 100%;
