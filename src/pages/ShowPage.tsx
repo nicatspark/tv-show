@@ -47,10 +47,19 @@ export const ShowPage = ({}: Props) => {
   return (
     <>
       <Breadcrumb>
-        <Link to='/'>&lt; back to the search page</Link>
+        &laquo; <Link to='/'>Search tv-show</Link>
+        <span className='hide-sm'>
+          {' '}
+          / show details - <strong>{showData.name}</strong>
+        </span>
       </Breadcrumb>
       <Container>
-        <img src={showData.image.medium} alt={showData.name} />
+        <img
+          width={210}
+          height={295}
+          src={showData.image.medium}
+          alt={showData.name}
+        />
         <div>
           <h2>{showData.name}</h2>
           <Fragment>{parse(showData.summary)}</Fragment>

@@ -11,6 +11,7 @@ type Props = {
 export default function Search({ updateResults }: Props) {
   const [searchString, setSearchString] = useState<string>('')
   const input = useRef<HTMLInputElement | null>(null)
+  const [persistantGet, persistantStore] = useMakePersistant(setSearchString)
 
   useEffect(() => {
     input.current && input.current.focus()
@@ -20,6 +21,7 @@ export default function Search({ updateResults }: Props) {
     const callAsync = async () => {
       const result = await searchApi(searchString)
       updateResults(result)
+      persistantStore(searchString)
       input.current && input.current.focus()
       broadcast.emit('PENDING-SEARCH', false)
     }
@@ -28,6 +30,11 @@ export default function Search({ updateResults }: Props) {
       callAsync()
     } else updateResults([])
   }, [searchString])
+
+  useEffect(() => {
+    const defaultSearchString = persistantGet()
+    if (defaultSearchString) setSearchString(defaultSearchString)
+  }, [])
 
   return (
     <>
@@ -46,4 +53,20 @@ export default function Search({ updateResults }: Props) {
       </div>
     </>
   )
+}
+
+function useMakePersistant(
+  setSearchString: (searchString: string) => void
+): [() => string | null, (s: string) => void] {
+  const persistantStore = (s: string) => {
+    sessionStorage.setItem('searchString', s)
+  }
+  const persistantGet = () => sessionStorage.getItem('searchString')
+
+  useEffect(() => {
+    const defaultSearchString = sessionStorage.getItem('searchString')
+    if (defaultSearchString) setSearchString(defaultSearchString)
+  }, [])
+
+  return [persistantGet, persistantStore]
 }

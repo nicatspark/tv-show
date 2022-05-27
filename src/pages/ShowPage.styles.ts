@@ -35,10 +35,13 @@ export const Container = styled.div`
 `
 
 export const Breadcrumb = styled.div`
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background-color: #ccc;
   a {
-    text-decoration: none;
-    color: #333333;
+    text-decoration: underline;
+    color: #335577;
   }
 `

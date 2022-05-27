@@ -12,13 +12,18 @@ export const SearchResultEl = styled.article`
   padding: 1rem;
   position: relative;
   & > div.card {
-    content-visibility: auto;
+    content-visibility: auto; /* only in chrome based browsers for now */
     background-color: #ffffff;
     border-radius: 0.3rem;
     overflow: hidden;
     cursor: pointer;
+    transition: all 200ms linear;
+    box-shadow: 0px 0px 0px rgba(0, 0, 0, 0);
     &:hover {
       outline: 3px solid var(--primary);
+      transform: scale(1.05);
+      z-index: 1;
+      box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     }
     & > div {
       aspect-ratio: 4/3;
