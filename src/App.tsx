@@ -5,20 +5,23 @@ import { ShowPage } from './pages/ShowPage'
 import { SearchPage } from './pages/SearchPage'
 import { Errorboundary } from './Errorboundary'
 import { Header } from './components/Header'
+import { RecoilRoot } from 'recoil'
 
 function App() {
   return (
-    <div className='App'>
-      <Container>
-        <Header />
-        <Errorboundary>
-          <Routes>
-            <Route path='/' element={<SearchPage />} />
-            <Route path='show/:id' element={<ShowPage />} />
-          </Routes>
-        </Errorboundary>
-      </Container>
-    </div>
+    <RecoilRoot>
+      <div className='App'>
+        <Container>
+          <Header />
+          <Errorboundary>
+            <Routes>
+              <Route path='/' element={<SearchPage />} />
+              <Route path='show/:id' element={<ShowPage />} />
+            </Routes>
+          </Errorboundary>
+        </Container>
+      </div>
+    </RecoilRoot>
   )
 }
 

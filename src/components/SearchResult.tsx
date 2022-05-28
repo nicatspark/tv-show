@@ -5,19 +5,22 @@ import { EmptyList, SearchLoader, SearchResultEl } from './SearchResult.styles'
 import loader from '../icons/loader.svg'
 import React from 'react'
 import { FavStar } from './FavStar'
+import { useRecoilState } from 'recoil'
+import { favState } from '../store'
 
 type Props = { apiResult: Tvshow[] }
 
 export const SearchResult = ({ apiResult }: Props) => {
+  const [favs, setFav] = useRecoilState(favState)
   const navigate = useNavigate()
   const missingImage =
     'https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'
 
-  const handleCardClick = (e: React.MouseEvent, id: number) => {
+  const handleCardClick = (e: React.MouseEvent, id: number, index: number) => {
     if (isFavClick(e)) {
-      console.log('is favorite')
       e.stopPropagation()
       e.preventDefault()
+      toggleFavorit(apiResult[index].show.id, index)
       return
     }
     makeRoomForAnimationToPop()
@@ -38,17 +41,28 @@ export const SearchResult = ({ apiResult }: Props) => {
       const el = e.target as HTMLElement
       return !!el.closest('.fav')
     }
+
+    function showExistsInFavs(showId: number) {
+      return !!favs.find((show) => show.show.id === showId)
+    }
+
+    function toggleFavorit(showId: number, index: number) {
+      showExistsInFavs(showId)
+        ? setFav(favs.filter((show) => show.show.id !== showId))
+        : setFav([...favs, apiResult[index]])
+    }
   }
 
   const showSearchLoader = useIsLoadingSearchResult()
+  console.log('favs', favs)
 
   return (
     <SearchResultEl className='contain-z-index'>
       {apiResult.length > 0 ? (
-        apiResult.map((showdata) => (
+        apiResult.map((showdata, index) => (
           <div
             className='card animate'
-            onClick={(e) => handleCardClick(e, showdata.show.id)}
+            onClick={(e) => handleCardClick(e, showdata.show.id, index)}
             key={showdata.show.id}
           >
             <div>
@@ -62,7 +76,11 @@ export const SearchResult = ({ apiResult }: Props) => {
               <div className={showdata.show.rating.average ? 'rating' : ''}>
                 {showdata.show.rating.average}
               </div>
-              <FavStar />
+              <FavStar
+                selected={
+                  !!favs.find((show) => show.show.id === showdata.show.id)
+                }
+              />
             </div>
             <h5>{showdata.show.name}</h5>
           </div>
