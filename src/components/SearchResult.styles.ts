@@ -11,6 +11,9 @@ export const SearchResultEl = styled.article`
   grid-template-columns: repeat(auto-fit, minmax(min(180px, 100%), 1fr));
   padding: 1rem;
   position: relative;
+  .contain-z-index {
+    isolation: isolate;
+  }
   & > div.card {
     content-visibility: auto; /* only in chrome based browsers for now */
     background-color: #ffffff;

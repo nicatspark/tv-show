@@ -13,15 +13,25 @@ export const SearchResult = ({ apiResult }: Props) => {
     'https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'
 
   const showDetails = (e: React.MouseEvent, id: number) => {
-    const el = (e.target as HTMLDivElement).closest('.card')
-    el?.classList.add('clicked')
+    makeRoomForAnimationToPop()
+    makeAnimationPop()
     setTimeout(() => navigate(`/show/${id}`), 300)
+
+    function makeAnimationPop() {
+      const el = (e.target as HTMLDivElement).closest('.card')
+      el?.classList.add('clicked')
+    }
+
+    function makeRoomForAnimationToPop() {
+      const el = document.querySelector('.contain-z-index')
+      el?.classList.remove('contain-z-index')
+    }
   }
 
   const showSearchLoader = useIsLoadingSearchResult()
 
   return (
-    <SearchResultEl>
+    <SearchResultEl className='contain-z-index'>
       {apiResult.length > 0 ? (
         apiResult.map((showdata) => (
           <div
