@@ -10,7 +10,7 @@ export const Container = styled.main`
   .search {
     position: sticky;
     top: 0;
-    z-index: 1;
+    z-index: 100;
     background-color: #eeeeee;
     display: grid;
     place-items: center;

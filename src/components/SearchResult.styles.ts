@@ -69,6 +69,7 @@ export const SearchResultEl = styled.article`
     transform: perspective(800px) rotateY(-15deg) translateY(-10px)
       rotateX(10deg) scale(3);
     opacity: 0;
+    z-index: 200;
   }
 `
 export const EmptyList = styled.div`
