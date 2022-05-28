@@ -26,6 +26,7 @@ export const Container = styled.main`
       padding: 1rem;
       width: 100%;
       font-size: 1.5rem;
+      background-color: #ffffff;
     }
   }
 `
