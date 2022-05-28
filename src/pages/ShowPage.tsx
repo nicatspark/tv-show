@@ -57,7 +57,10 @@ export const ShowPage = ({}: Props) => {
         <img
           width={210}
           height={295}
-          src={showData.image.medium}
+          src={
+            showData.image?.medium ||
+            'https://www.nationalpetregister.org/assets/img/no-photo.jpg'
+          }
           alt={showData.name}
         />
         <div>
@@ -67,7 +70,12 @@ export const ShowPage = ({}: Props) => {
             {year(showData.premiered)}
             {showData.ended && ' - '} {year(showData.ended)}
           </h6>
-          <Fragment>{parse(showData.summary)}</Fragment>
+          <div className='summary'>
+            {parse(
+              showData.summary ||
+                '<p>Sorry but the summary seems to be missing.<p>'
+            )}
+          </div>
         </div>
       </Container>
     </>

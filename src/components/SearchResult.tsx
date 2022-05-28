@@ -12,8 +12,10 @@ export const SearchResult = ({ apiResult }: Props) => {
   const missingImage =
     'https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'
 
-  const showDetails = (id: number) => {
-    navigate(`/show/${id}`)
+  const showDetails = (e: React.MouseEvent, id: number) => {
+    const el = (e.target as HTMLDivElement).closest('.card')
+    el?.classList.add('clicked')
+    setTimeout(() => navigate(`/show/${id}`), 300)
   }
 
   const showSearchLoader = useIsLoadingSearchResult()
@@ -23,8 +25,8 @@ export const SearchResult = ({ apiResult }: Props) => {
       {apiResult.length > 0 ? (
         apiResult.map((showdata) => (
           <div
-            className='card'
-            onClick={() => showDetails(showdata.show.id)}
+            className='card animate'
+            onClick={(e) => showDetails(e, showdata.show.id)}
             key={showdata.show.id}
           >
             <div>

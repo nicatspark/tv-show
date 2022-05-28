@@ -34,8 +34,9 @@ export const Container = styled.div`
   h2 {
     font-size: 2em;
   }
-  & > div > p {
+  & > div > div.summary > p {
     line-height: 1.5em;
+    margin-bottom: 1rem;
   }
 `
 
