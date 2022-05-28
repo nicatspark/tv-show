@@ -30,6 +30,30 @@ export const SearchResultEl = styled.article`
       z-index: 1;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
     }
+    & > div.showtop {
+      position: absolute;
+      top: 0;
+      padding: 0.8rem;
+      display: flex;
+      justify-content: space-between;
+      div.rating {
+        background-color: var(--color-primary);
+        color: #ffffff;
+        border-radius: 50%;
+        font-weight: bold;
+        padding: 0.5em;
+      }
+      svg {
+        transform: scale(1.5);
+        stroke-width: 2px;
+        stroke: var(--color-primary);
+        fill: transparent;
+        filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.5));
+        &.selected {
+          fill: var(--color-primary);
+        }
+      }
+    }
     & > div {
       position: absolute;
       width: 100%;

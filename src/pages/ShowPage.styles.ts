@@ -12,6 +12,9 @@ export const Container = styled.div`
     flex-flow: row nowrap;
     align-items: flex-start;
   }
+  .separator {
+    padding: 0 0.5rem;
+  }
   div.loader {
     position: absolute;
     inset: 0;
@@ -64,7 +67,7 @@ export const Breadcrumb = styled.nav`
     a {
       background-color: transparent;
       text-decoration: underline;
-      color: #335577;
+      color: #113355;
       border-radius: 0;
       padding: 0;
     }

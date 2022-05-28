@@ -51,11 +51,10 @@ export const ShowPage = ({}: Props) => {
   return (
     <>
       <Breadcrumb>
-        <span className='hide-sm'>&laquo;</span>{' '}
         <Link to='/'>search again</Link>
         <span className='hide-sm'>
           {' '}
-          {parse('&#10033;')} show details - <strong>{showData.name}</strong>
+          &raquo; show details - <strong>{showData.name}</strong>
         </span>
       </Breadcrumb>
       <Container ref={swipeEl}>
@@ -71,9 +70,14 @@ export const ShowPage = ({}: Props) => {
         <div>
           <h2>{showData.name}</h2>
           <h6>
-            {showData.genres.join(', ')} {parse('&#10033;')}{' '}
-            {year(showData.premiered)}
-            {showData.ended && ' - '} {year(showData.ended)}
+            <>
+              {showData.genres.join(', ')}
+              <Sep />
+              {year(showData.premiered)}
+              {showData.ended && ' - '} {year(showData.ended)}
+              <Sep />
+              Scoring: {showData.rating?.average || '-'}
+            </>
           </h6>
           <div className='summary'>
             {parse(
@@ -97,6 +101,10 @@ function wrapInPifMissing(s: string) {
 function year(s: string) {
   if (typeof s !== 'string') return s
   return s.split('-')[0]
+}
+
+function Sep() {
+  return <span className='separator'>{parse('&#10033;')}</span>
 }
 
 function useNavigateOnSwipe(el: HTMLDivElement | null) {
