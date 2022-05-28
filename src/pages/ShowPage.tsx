@@ -51,7 +51,8 @@ export const ShowPage = ({}: Props) => {
   return (
     <>
       <Breadcrumb>
-        &laquo; <Link to='/'>search more</Link>
+        <span className='hide-sm'>&laquo;</span>{' '}
+        <Link to='/'>search again</Link>
         <span className='hide-sm'>
           {' '}
           {parse('&#10033;')} show details - <strong>{showData.name}</strong>

@@ -4,16 +4,13 @@ import { Route, Routes } from 'react-router-dom'
 import { ShowPage } from './pages/ShowPage'
 import { SearchPage } from './pages/SearchPage'
 import { Errorboundary } from './Errorboundary'
-import tv from './icons/tv.svg'
+import { Header } from './components/Header'
 
 function App() {
   return (
     <div className='App'>
       <Container>
-        <header>
-          <img src={tv} alt='TV-logo' />
-          <h1>TV-Search</h1>
-        </header>
+        <Header />
         <Errorboundary>
           <Routes>
             <Route path='/' element={<SearchPage />} />

@@ -34,9 +34,12 @@ export const Container = styled.div`
   h2 {
     font-size: 2em;
   }
-  & > div > div.summary > p {
-    line-height: 1.5em;
-    margin-bottom: 1rem;
+  & > div > div.summary {
+    max-width: 500px;
+    & > p {
+      line-height: 1.5em;
+      margin-bottom: 1rem;
+    }
   }
 `
 
@@ -50,8 +53,20 @@ export const Breadcrumb = styled.div`
   top: 0;
   z-index: 1;
   a {
-    text-decoration: underline;
-    color: #335577;
+    background-color: #335577;
+    text-decoration: none;
+    color: white;
     font-weight: bold;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+  }
+  @media only screen and (min-width: 756px) {
+    a {
+      background-color: transparent;
+      text-decoration: underline;
+      color: #335577;
+      border-radius: 0;
+      padding: 0;
+    }
   }
 `

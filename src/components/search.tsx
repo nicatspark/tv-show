@@ -40,7 +40,7 @@ export default function Search({ updateResults }: Props) {
     <>
       <div className='search'>
         <label htmlFor='search-input'>
-          <img src={Magnifyer} alt='Search' />
+          <img src={Magnifyer} alt='Search' className='hide-sm' />
         </label>
         <input
           type='search'
