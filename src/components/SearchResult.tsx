@@ -41,7 +41,7 @@ export const SearchResult = ({ apiResult }: Props) => {
         ))
       ) : (
         <EmptyList>
-          <div className='hint'>
+          <div className='hint scale-down-sm'>
             <svg xmlns='http://www.w3.org/2000/svg' width='115' height='45'>
               <g
                 fill='none'
@@ -57,7 +57,7 @@ export const SearchResult = ({ apiResult }: Props) => {
                 />
               </g>
             </svg>
-            <h5>Woo! Try'n write something.</h5>
+            <h5>Wooho! Try'n write something.</h5>
           </div>
         </EmptyList>
       )}

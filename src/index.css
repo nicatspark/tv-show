@@ -37,4 +37,7 @@ code {
   .hide-sm {
     display: none;
   }
+  .scale-down-sm {
+    transform: scale(0.6);
+  }
 }
