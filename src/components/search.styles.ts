@@ -7,22 +7,6 @@ export const Container = styled.main`
   margin: auto;
   isolation: isolate;
   box-shadow: 0 0 20px 10px rgb(0 0 0 / 50%);
-  header {
-    height: 130px;
-    width: 100%;
-    background-color: #ee4e34;
-    color: #272222;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 0 1rem;
-    img {
-      height: 2.4rem;
-      position: relative;
-      top: -0.2rem;
-    }
-  }
   .search {
     position: sticky;
     top: 0;

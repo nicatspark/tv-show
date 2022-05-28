@@ -5,7 +5,7 @@
 }
 
 :root {
-  --primary: #ee4e34;
+  --color-primary: #ee4e34;
 }
 
 body {
@@ -16,8 +16,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #333;
+  background-image: radial-gradient(hsl(240deg 8% 46%), hsl(0deg 0% 13%));
+  background-position: top;
   height: 100vh;
+}
+
+nav {
+  background-color: var(--color-primary);
+  min-height: 1.5rem;
 }
 
 #root,

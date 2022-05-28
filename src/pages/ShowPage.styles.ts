@@ -43,12 +43,12 @@ export const Container = styled.div`
   }
 `
 
-export const Breadcrumb = styled.div`
+export const Breadcrumb = styled.nav`
   font-size: 0.65rem;
   padding: 0.5rem 1rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  background-color: #ccc;
+  background-color: var(color-primary);
   position: sticky;
   top: 0;
   z-index: 1;

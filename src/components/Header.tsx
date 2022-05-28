@@ -2,6 +2,15 @@ import styled from '@emotion/styled'
 import tv from '../icons/tv.svg'
 
 const HeaderStyled = styled.header`
+  height: 130px;
+  width: 100%;
+  background-color: #000000;
+  color: #272222;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 1rem;
   img {
     height: 4rem;
     position: relative;

@@ -3,6 +3,7 @@ import { searchApi } from '../api/api-service'
 import { Tvshow } from '../api/api-type-definitions'
 import { broadcast } from '@foundit/broadcasterjs'
 import Magnifyer from '../icons/magnifyer.svg'
+import { Breadcrumb } from '../pages/ShowPage.styles'
 
 type Props = {
   updateResults: (result: Tvshow[]) => void
@@ -38,6 +39,7 @@ export default function Search({ updateResults }: Props) {
 
   return (
     <>
+      <nav></nav>
       <div className='search'>
         <label htmlFor='search-input'>
           <img src={Magnifyer} alt='Search' className='hide-sm' />

@@ -22,7 +22,7 @@ export const SearchResultEl = styled.article`
     position: relative;
     aspect-ratio: 9/12;
     &:hover {
-      outline: 3px solid var(--primary);
+      outline: 3px solid var(--color-primary);
       transform: scale(1.05);
       z-index: 1;
       box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);

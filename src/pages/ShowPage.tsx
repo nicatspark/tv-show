@@ -77,7 +77,7 @@ export const ShowPage = ({}: Props) => {
           </h6>
           <div className='summary'>
             {parse(
-              showData.summary ||
+              wrapInPifMissing(showData.summary) ||
                 '<p>Sorry but the summary seems to be missing.<p>'
             )}
           </div>
@@ -88,6 +88,11 @@ export const ShowPage = ({}: Props) => {
 }
 
 /* local helpers */
+
+function wrapInPifMissing(s: string) {
+  if (!s) return
+  return !!s.trim().match(/^<p>/i) ? s : `<p>${s}</p>`
+}
 
 function year(s: string) {
   if (typeof s !== 'string') return s
