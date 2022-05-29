@@ -26,7 +26,7 @@ export const FavoritsPage = ({}: Props) => {
         {favs.length > 0 ? (
           <ul>
             {favs.map((show) => (
-              <li>
+              <li key={show.show.id}>
                 <Link to={`/show/${show.show.id}`}>{show.show.name}</Link>
               </li>
             ))}
