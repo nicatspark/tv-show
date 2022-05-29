@@ -5,22 +5,19 @@ import { EmptyList, SearchLoader, SearchResultEl } from './SearchResult.styles'
 import loader from '../icons/loader.svg'
 import React from 'react'
 import { FavStar } from './FavStar'
-import { useRecoilState } from 'recoil'
-import { favState } from '../store'
+import { useFavorits } from '../helpers/useFavorits'
+import { missingImage } from '../config'
 
 type Props = { apiResult: Tvshow[] }
 
 export const SearchResult = ({ apiResult }: Props) => {
-  const [favs, setFav] = useRecoilState(favState)
   const navigate = useNavigate()
-  const missingImage =
-    'https://digitalfinger.id/wp-content/uploads/2019/12/no-image-available-icon-6.png'
+  const { toggleFavorit, favs } = useFavorits()
 
   const handleCardClick = (e: React.MouseEvent, id: number, index: number) => {
     if (isFavClick(e)) {
       e.stopPropagation()
-      e.preventDefault()
-      toggleFavorit(apiResult[index].show.id, index)
+      toggleFavorit({ selectedShow: apiResult[index] })
       return
     }
     makeRoomForAnimationToPop()
@@ -40,16 +37,6 @@ export const SearchResult = ({ apiResult }: Props) => {
     function isFavClick(e: React.MouseEvent) {
       const el = e.target as HTMLElement
       return !!el.closest('.fav')
-    }
-
-    function showExistsInFavs(showId: number) {
-      return !!favs.find((show) => show.show.id === showId)
-    }
-
-    function toggleFavorit(showId: number, index: number) {
-      showExistsInFavs(showId)
-        ? setFav(favs.filter((show) => show.show.id !== showId))
-        : setFav([...favs, apiResult[index]])
     }
   }
 
@@ -77,7 +64,7 @@ export const SearchResult = ({ apiResult }: Props) => {
               </div>
               <FavStar
                 selected={
-                  !!favs.find((show) => show.show.id === showdata.show.id)
+                  !!favs?.find((show) => show.show.id === showdata.show.id)
                 }
               />
             </div>
