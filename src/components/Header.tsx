@@ -1,6 +1,8 @@
 import styled from '@emotion/styled'
 import { Link } from 'react-router-dom'
+import { useRecoilValue } from 'recoil'
 import tv from '../icons/tv.svg'
+import { favState } from '../store'
 
 const HeaderStyled = styled.header`
   height: 130px;
@@ -35,7 +37,7 @@ const HeaderStyled = styled.header`
     a {
       background-color: var(--color-primary);
       color: #000000;
-      padding: 0.7em 1em;
+      padding: 0.7em 1em 0.7em 0.1em;
       border-radius: 0.6em;
       font-weight: bold;
       text-decoration: none;
@@ -44,6 +46,19 @@ const HeaderStyled = styled.header`
       bottom: -2rem;
       border: 3px solid #000000;
       z-index: 101;
+      display: flex;
+      align-items: center;
+      div.favtotal {
+        background-color: #000000;
+        border-radius: 50%;
+        color: #ffffff;
+        padding: 0em;
+        width: 2em;
+        aspect-ratio: 1/1;
+        display: grid;
+        place-items: center;
+        transform: scale(0.6);
+      }
     }
     @media only screen and (min-width: 756px) {
       position: relative;
@@ -53,6 +68,7 @@ const HeaderStyled = styled.header`
   }
 `
 export const Header = () => {
+  const favs = useRecoilValue(favState)
   return (
     <HeaderStyled>
       <div className='logo'>
@@ -60,7 +76,10 @@ export const Header = () => {
         <h1>TV-Search</h1>
       </div>
       <div className='favs'>
-        <Link to='/favorits'>My favorits</Link>
+        <Link to='/favorits'>
+          <div className='favtotal'>{favs.length}</div>
+          <span>My favorits</span>
+        </Link>
       </div>
     </HeaderStyled>
   )

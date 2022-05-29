@@ -7,6 +7,9 @@ export const Container = styled.main`
   margin: auto;
   isolation: isolate;
   box-shadow: 0 0 20px 10px rgb(0 0 0 / 50%);
+  display: grid;
+  grid-template-rows: auto auto auto 1fr;
+  position: relative;
   .search {
     position: sticky;
     top: 0;
