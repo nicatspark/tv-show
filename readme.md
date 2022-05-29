@@ -31,11 +31,13 @@ In this code I used z-index. I use to avoid that at all costs except for tempora
 
 ### Time constraints
 
-As usual 80% takes 20% of the time and the last 20% takes 80% of the time. Did not do it in one go so can't say exactly where the 5 hours stop was but probably around the 80% mark.
+As usual 80% of progress takes 20% of the time and the last 20% progress takes 80% of the time. Did not do it in one go so can't say exactly where the 5 hours laptime was but probably around the 80% mark.
 
 ### Further improvments
 
 A debouncer or throttle on the keyboard input in the search.
-Add Recoil, Jotai, Zustand or my own minimal footprint global state manager and favorite function would have been a nice addition.
+Store favorits in local storage.
+UI/UX improvments on the favorits page.
+Should implement some sort of coherent navigation really.
 Fix the lazy loading on images that seems buggy on an actual iOs device.
 etc...

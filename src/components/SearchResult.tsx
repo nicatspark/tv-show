@@ -54,7 +54,6 @@ export const SearchResult = ({ apiResult }: Props) => {
   }
 
   const showSearchLoader = useIsLoadingSearchResult()
-  console.log('favs', favs)
 
   return (
     <SearchResultEl className='contain-z-index'>

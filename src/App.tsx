@@ -6,6 +6,7 @@ import { SearchPage } from './pages/SearchPage'
 import { Errorboundary } from './Errorboundary'
 import { Header } from './components/Header'
 import { RecoilRoot } from 'recoil'
+import { FavoritsPage } from './pages/FavoritsPage'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route path='/' element={<SearchPage />} />
               <Route path='show/:id' element={<ShowPage />} />
+              <Route path='favorits' element={<FavoritsPage />} />
             </Routes>
           </Errorboundary>
         </Container>
