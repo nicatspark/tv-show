@@ -43,7 +43,7 @@ const HeaderStyled = styled.header`
       right: 1em;
       bottom: -2rem;
       border: 3px solid #000000;
-      z-index: 2;
+      z-index: 101;
     }
     @media only screen and (min-width: 756px) {
       position: relative;
