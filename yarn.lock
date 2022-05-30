@@ -1066,6 +1066,11 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+tinygesture@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/tinygesture/-/tinygesture-2.0.0.tgz#e310711abb1737109d859ff5fd6212e27b185aab"
+  integrity sha512-Xhpo6tCvUOyVq7BmJh/WDi+9qFh5AtuUqbKoMG5vpG+PT6JLPGE9D5hl9kZlj1ZqsgHuGb1OrNAXoHh8qIDpjA==
+
 to-fast-properties@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/to-fast-properties/-/to-fast-properties-2.0.0.tgz"

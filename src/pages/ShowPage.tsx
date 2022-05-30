@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate, useParams } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { Link, useParams } from 'react-router-dom'
 import { detailsApi } from '../api/api-service'
 import { SpecificShow } from '../api/api-type-definitions'
 import { extractError } from '../helpers/extractError'
 import parse from 'html-react-parser'
 import loader from '../icons/loader.svg'
 import { Breadcrumb, Container } from './ShowPage.styles'
-import { swipedetect } from '../helpers/swipeDetect'
+import { useNavigateOnRightSwipe } from '../helpers/useNavigateOnRightSwipe'
 
 type Props = {}
 
@@ -14,9 +14,8 @@ export const ShowPage = ({}: Props) => {
   const { id } = useParams()
   const [error, setError] = useState<string>('')
   const [showData, setShowData] = useState<SpecificShow>()
-  const swipeEl = useRef<HTMLDivElement | null>(null)
 
-  useNavigateOnSwipe(swipeEl.current)
+  useNavigateOnRightSwipe()
 
   useEffect(() => {
     const doAsync = async (id: number) => {
@@ -57,7 +56,7 @@ export const ShowPage = ({}: Props) => {
           &raquo; show details - <strong>{showData.name}</strong>
         </span>
       </Breadcrumb>
-      <Container ref={swipeEl}>
+      <Container>
         <img
           width={210}
           height={295}
@@ -105,15 +104,4 @@ function year(s: string) {
 
 function Sep() {
   return <span className='separator'>{parse('&#10033;')}</span>
-}
-
-function useNavigateOnSwipe(el: HTMLDivElement | null) {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!el) return
-    swipedetect(el, (dir) => {
-      if (dir === 'right') navigate('/')
-    })
-  }, [])
 }

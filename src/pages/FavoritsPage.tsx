@@ -1,12 +1,12 @@
-import { useEffect, useRef } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useRef } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Breadcrumb } from './ShowPage.styles'
 import { FavoritsContainer } from './FavoritsPage.styles'
-import { swipedetect } from '../helpers/swipeDetect'
 import { favState } from '../store'
 import { useRecoilState } from 'recoil'
 import { FavStar } from '../components/FavStar'
+import { useNavigateOnRightSwipe } from '../helpers/useNavigateOnRightSwipe'
 
 type Props = {}
 
@@ -14,7 +14,7 @@ export const FavoritsPage = ({}: Props) => {
   const swipeEl = useRef<HTMLDivElement | null>(null)
   const [favs, setFavs] = useRecoilState(favState)
 
-  useNavigateOnSwipe(swipeEl.current)
+  useNavigateOnRightSwipe()
 
   const clearFavs = () => {
     if (confirm('You sure?')) setFavs([])
@@ -48,15 +48,4 @@ export const FavoritsPage = ({}: Props) => {
       </FavoritsContainer>
     </>
   )
-}
-
-function useNavigateOnSwipe(el: HTMLDivElement | null) {
-  const navigate = useNavigate()
-
-  useEffect(() => {
-    if (!el) return
-    swipedetect(el, (dir) => {
-      if (dir === 'right') navigate('/')
-    })
-  }, [])
 }
