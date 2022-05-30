@@ -5,15 +5,20 @@ import { Breadcrumb } from './ShowPage.styles'
 import { FavoritsContainer } from './FavoritsPage.styles'
 import { swipedetect } from '../helpers/swipeDetect'
 import { favState } from '../store'
-import { useRecoilValue } from 'recoil'
+import { useRecoilState } from 'recoil'
+import { FavStar } from '../components/FavStar'
 
 type Props = {}
 
 export const FavoritsPage = ({}: Props) => {
   const swipeEl = useRef<HTMLDivElement | null>(null)
-  const favs = useRecoilValue(favState)
+  const [favs, setFavs] = useRecoilState(favState)
 
   useNavigateOnSwipe(swipeEl.current)
+
+  const clearFavs = () => {
+    if (confirm('You sure?')) setFavs([])
+  }
 
   return (
     <>
@@ -24,13 +29,19 @@ export const FavoritsPage = ({}: Props) => {
       <FavoritsContainer ref={swipeEl}>
         <h1>My Favorites</h1>
         {favs.length > 0 ? (
-          <ul>
-            {favs.map((show) => (
-              <li key={show.show.id}>
-                <Link to={`/show/${show.show.id}`}>{show.show.name}</Link>
-              </li>
-            ))}
-          </ul>
+          <>
+            <ul>
+              {favs.map((show) => (
+                <li key={show.show.id}>
+                  <FavStar />
+                  <Link to={`/show/${show.show.id}`}>{show.show.name}</Link>
+                </li>
+              ))}
+            </ul>
+            <div className='btn-clear' onClick={clearFavs}>
+              Clear favorites
+            </div>
+          </>
         ) : (
           <p>No favorits selected yet.</p>
         )}

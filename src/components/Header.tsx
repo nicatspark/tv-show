@@ -37,7 +37,7 @@ const HeaderStyled = styled.header`
     a {
       background-color: var(--color-primary);
       color: #000000;
-      padding: 0.7em 1em 0.7em 0.1em;
+      padding: 0.7em 1em;
       border-radius: 0.6em;
       font-weight: bold;
       text-decoration: none;
@@ -58,6 +58,10 @@ const HeaderStyled = styled.header`
         display: grid;
         place-items: center;
         transform: scale(0.6);
+        position: absolute;
+        top: -0.8em;
+        right: -0.8em;
+        border: 3px solid var(--color-primary);
       }
     }
     @media only screen and (min-width: 756px) {
