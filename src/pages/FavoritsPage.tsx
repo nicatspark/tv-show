@@ -8,9 +8,7 @@ import { useRecoilState } from 'recoil'
 import { FavStar } from '../components/FavStar'
 import { useNavigateOnRightSwipe } from '../helpers/useNavigateOnRightSwipe'
 
-type Props = {}
-
-export const FavoritsPage = ({}: Props) => {
+export const FavoritsPage = () => {
   const swipeEl = useRef<HTMLDivElement | null>(null)
   const [favs, setFavs] = useRecoilState(favState)
 

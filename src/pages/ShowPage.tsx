@@ -8,9 +8,7 @@ import loader from '../icons/loader.svg'
 import { Breadcrumb, Container } from './ShowPage.styles'
 import { useNavigateOnRightSwipe } from '../helpers/useNavigateOnRightSwipe'
 
-type Props = {}
-
-export const ShowPage = ({}: Props) => {
+export const ShowPage = () => {
   const { id } = useParams()
   const [error, setError] = useState<string>('')
   const [showData, setShowData] = useState<SpecificShow>()

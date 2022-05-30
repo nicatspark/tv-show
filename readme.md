@@ -31,7 +31,7 @@ In this code I used z-index. I use to avoid that (except for temporary changes) 
 
 ### Time constraints
 
-As usual 80% of progress takes 20% of the time and the last 20% progress takes 80% of the time. Did not do it in one go so can't say exactly where the 5 hours laptime was but probably around the 80% mark.
+As usual 80% of progress takes 20% of the time and the last 20% progress takes 80% of the time. Did not do it in one go so can't say exactly where the 5 hours laptime was but probably around the 80% mark, i.e. fullfilled basic requirements.
 
 ### Further improvments
 

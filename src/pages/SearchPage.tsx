@@ -3,9 +3,7 @@ import { Tvshow } from '../api/api-type-definitions'
 import Search from '../components/search'
 import { SearchResult } from '../components/SearchResult'
 
-type Props = {}
-
-export const SearchPage = (props: Props) => {
+export const SearchPage = () => {
   const [apiResult, setApiResult] = useState<Tvshow[]>([])
 
   const updateResult = (data: Tvshow[]) => {
